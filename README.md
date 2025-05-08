@@ -1,16 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI Video Model
 
-## Getting Started
+Este é um projeto [Next.js](https://nextjs.org) que utiliza Convex, Inngest, Remotion e Akool para criar experiências de vídeo sinestésicas.
 
-First, run the development server:
+## Configuração do Ambiente
+
+1. Clone o repositório
+2. Copie o arquivo `.env.example` para `.env.local`:
+   ```bash
+   cp .env.example .env.local
+   ```
+3. Preencha as variáveis de ambiente no arquivo `.env.local` com suas próprias chaves e tokens:
+   - Clerk para autenticação
+   - Convex para banco de dados
+   - OpenRouter para IA
+   - Akool para geração de vídeo
+   - ImageKit para upload de imagens
+
+## Iniciando o Desenvolvimento
+
+Execute o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
