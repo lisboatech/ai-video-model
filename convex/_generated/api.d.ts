@@ -13,7 +13,6 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as users from "../users.js";
 import type * as videoData from "../videoData.js";
 
 /**
@@ -25,7 +24,6 @@ import type * as videoData from "../videoData.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  users: typeof users;
   videoData: typeof videoData;
 }>;
 export declare const api: FilterApi<

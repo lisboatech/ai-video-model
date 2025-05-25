@@ -1,18 +1,16 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import { NextResponse } from 'next/server';
 
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/', '/api/inngest'])
-
-export default clerkMiddleware(async (auth, req) => {
-    if (!isPublicRoute(req)) {
-        await auth.protect()
-    }
-})
+export function middleware(request) {
+  const { pathname } = request.nextUrl;
+  
+  // Redirecionar rotas antigas para as novas
+  if (pathname.startsWith('/workspace/mothers-day')) {
+    const newPath = pathname.replace('/workspace/mothers-day', '/workspace');
+    return NextResponse.redirect(new URL(newPath, request.url));
+  }
+}
 
 export const config = {
-    matcher: [
-        // Skip Next.js internals and all static files, unless found in search params
-        '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-        // Always run for API routes
-        '/(api|trpc)(.*)',
-    ],
-}
+  matcher: ['/workspace/mothers-day/:path*'],
+};
+

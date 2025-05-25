@@ -16,7 +16,7 @@ export const helloWorld = inngest.createFunction(
 
 
 export const CreateAvatar = inngest.createFunction(
-    { id: 'create-avatar' },
+    { id: 'jane-create-avatar' },
     { event: 'create-avatar' },
     async ({ event, step }) => {
         const { avatarId, voiceUrl, videoRecordId } = event.data;
@@ -26,7 +26,7 @@ export const CreateAvatar = inngest.createFunction(
             "GenerateAvatarId",
             async () => {
                 // Get Avatar Generated ID
-                
+
                 const result = await axios.post('https://openapi.akool.com/api/open/v3/talkingavatar/create', {
                     "width": 3840,
                     "height": 2160,
@@ -69,8 +69,8 @@ export const CreateAvatar = inngest.createFunction(
 
                 const generatedAvatarId= result.data?.data?._id
                 return generatedAvatarId
-                
-                
+
+
                //return "681627c8e9ee9ee22c946302"
             }
         )

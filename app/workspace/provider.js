@@ -1,43 +1,12 @@
 "use client";
 
-import { useMutation } from 'convex/react';
-import React, { useEffect, useState } from 'react'
-import { api } from '../../convex/_generated/api';
-import { useUser } from '@clerk/nextjs';
-import { SidebarProvider, SidebarTrigger } from '../../components/ui/sidebar'
-import { UserDetailContext } from '../../context/UserDetailContext'
-import { AppSidebar } from './_components/AppSidebar'
+import React from 'react'
 
 function WorkspaceProvider({ children }) {
-
-    const newUserMutation = useMutation(api.users.CreateNewUser);
-    const { user } = useUser();
-    const [userDetail, setUserDetail] = useState();
-
-    useEffect(() => {
-        user && CreateNewUser()
-    }, [user])
-
-    const CreateNewUser = async () => {
-        const result = await newUserMutation({
-            name: user?.fullName,
-            email: user?.primaryEmailAddress?.emailAddress,
-            picture: user?.imageUrl
-        });
-        console.log(result);
-        setUserDetail(result);
-    }
-
     return (
-        <UserDetailContext.Provider value={{userDetail, setUserDetail}}>
-             <SidebarProvider>
-                <AppSidebar />
-                <div className='w-full p-10'>
-                    <SidebarTrigger />
-                    {children}
-                </div>
-            </SidebarProvider>
-        </UserDetailContext.Provider>
+        <div className='max-w-7xl mx-auto p-6'>
+            {children}
+        </div>
     )
 }
 

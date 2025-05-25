@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        //domains: ['static.website-files.org', 'openapi.akool.com', 'static.akool.com', 'drz0f01yeq1cx.cloudfront.net']
         remotePatterns: [
             {
                 protocol: 'https',
@@ -33,8 +32,34 @@ const nextConfig = {
                 port: '',
                 pathname: '/**',
             },
-
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                port: '',
+                pathname: '/**',
+            },
         ],
+    },
+    // Configurações para produção
+    experimental: {
+        serverComponentsExternalPackages: ['@remotion/cli'],
+    },
+    // Permitir importação de arquivos MP3
+    webpack(config, { isServer }) {
+        config.module.rules.push({
+            test: /\.(mp3)$/,
+            type: 'asset/resource',
+            generator: {
+                filename: 'static/chunks/[path][name].[hash][ext]'
+            }
+        });
+
+        // Configurações específicas para Remotion
+        if (isServer) {
+            config.externals.push('@remotion/cli');
+        }
+
+        return config;
     }
 };
 

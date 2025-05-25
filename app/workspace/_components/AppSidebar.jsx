@@ -20,34 +20,24 @@ import { useParams, usePathname } from 'next/navigation'
 
 const MenuOptions=[
     {
-        title: 'Dashboard',
+        title: 'Início',
         icon: LayoutDashboard,
         path: '/workspace'
     },
     {
-        title: 'Create Ad',
+        title: 'Criar Experiência',
         icon: Video,
-        path: '/workspace/create-ad'
+        path: '/workspace/create-experience'
     },
     {
-        title: 'My Videos',
+        title: 'Minhas Experiências',
         icon: Videotape,
-        path: '/workspace/my-videos'
-    },
-    {
-        title: 'Billing',
-        icon: WalletCards,
-        path: '/workspace/billing'
-    },
-    {
-        title: 'Settings',
-        icon: Settings2Icon,
-        path: '/workspace/settings'
-    },
+        path: '/workspace/my-experiences'
+    }
 ]
 
 export function AppSidebar() {
-    
+
     const path=usePathname();
     console.log(path);
 
@@ -59,21 +49,21 @@ export function AppSidebar() {
             <hr />
             <SidebarContent>
                 <SidebarGroup>
-                    <Button className={'mt-5'}>+ Create New Ad Video</Button>
+                    <Button className={'mt-5 bg-primary hover:bg-primary/90'}>+ Criar Nova Experiência</Button>
                 </SidebarGroup>
 
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupLabel>Menu</SidebarGroupLabel>
 
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {MenuOptions.map((menu, index)=> (
                                 <SidebarMenuItem key={index}>
                                     <SidebarMenuButton asChild className={'p-5'}>
-                                        <a 
+                                        <a
                                             href={menu.path}
                                             className={`text-[17px] ${path==menu.path&&'text-primary bg-blue-100'}`}
-                                        
+
                                         >
                                             <menu.icon className='h-10 w-10'/>
                                             <span>{menu.title}</span>

@@ -1,0 +1,56 @@
+/* Workspace specific styles */
+html, body {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.workspace-container {
+  background-color: black;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Custom scrollbar for dark theme */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Aplicar scrollbar personalizada a todos os elementos com overflow */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+/* Estilização personalizada para o player de áudio */
+audio {
+  filter: invert(100%) hue-rotate(180deg);
+  border-radius: 30px;
+  height: 36px;
+}
+
+/* Estilização para o estado de foco do player de áudio */
+audio:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 45, 85, 0.3);
+}

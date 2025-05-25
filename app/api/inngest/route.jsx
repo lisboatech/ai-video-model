@@ -1,13 +1,11 @@
 import { serve } from "inngest/next";
-import { CreateAvatar, helloWorld } from "./../../../inngest/functions";
 import { inngest } from "./../../../inngest/client";
+import { createVoice } from "./../../../inngest/functions/createVoice";
 
-// Create an API that serves zero functions
+// Configurar o Inngest com as funções necessárias
 export const { GET, POST, PUT } = serve({
     client: inngest,
-    functions: [
-        /* your functions will be passed here later! */
-        helloWorld,
-        CreateAvatar
-    ],
+    functions: [createVoice]
 });
+
+
